@@ -1,0 +1,22 @@
+﻿@model List<TodoListApp.Entities.Todo>
+@{
+    ViewData["Title"] = "Todo List Uygulaması";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <header>Yapılacaklar Listesi</header>
+    <form asp-action="Index" asp-controller="Home" method="post">
+        <div class="inputField">
+            <input type="text" name="title">
+            <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+    </form>
+
+    <ul class="todoList">
+        @foreach (var item in Model)
+        {
+            <li>@item.Title<span class="icon"><a href="/Home/Delete/@item.Id"><i class="fas fa-trash"></i></a></span></li>
+        }
+    </ul>
+</div>
